@@ -36,7 +36,7 @@ public abstract class SnakeBot extends Thread {
     public void next() {
         while(this.snakeDataTransferReference.ready==false) {
             try {
-                Thread.sleep(1);
+                Thread.sleep(0);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

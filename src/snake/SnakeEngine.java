@@ -11,7 +11,7 @@ import javafx.scene.paint.Color;
  * Created by apolol92 on 24.01.2016.
  * This is the snake engine. Use it to run
  */
-public class SnakeEngine extends AnimationTimer {
+public class SnakeEngine extends Thread {
     /**
      * Standard score labeltext
      */
@@ -45,12 +45,16 @@ public class SnakeEngine extends AnimationTimer {
     /**
      * Game delay
      */
-    public final int EXTRA_GAME_DELAY = 10;
+    public final int EXTRA_GAME_DELAY = 0;
     /**
      * Failing delay
      */
-    public final int FAILING_DELAY = 5;
+    public final int FAILING_DELAY = 0;
 
+    /**
+     * Delay in ms between ticks
+     */
+    public int tick_delay_ms = 0;
     /**
      * Construct GameEngine
      * @param gc, reference on canvas GraphicsContext
@@ -96,30 +100,40 @@ public class SnakeEngine extends AnimationTimer {
     }
 
 
+    public void waitMs(int ms) {
+        long start_ms = System.currentTimeMillis();
+        long current_ms;
+        do {
+            current_ms = System.currentTimeMillis();
+            System.out.println(Math.abs(current_ms-start_ms));
+        }while(Math.abs(current_ms-start_ms)<=ms);
+    }
+
     /**
-     * runs with 60Hz
-     * @param now
+     * runs
      */
     @Override
-    public void handle(long now) {
-        snakeDataTransfer.ready = true;
-        //Game Over?
-        if(this.snakeWorld.gameOver) {
-            failCounter++;
-            drawSnakeGameOver(failCounter,snakeWorld);
-            if(failCounter>=FAILING_DELAY) {
-                this.snakeWorld.restart();
-                failCounter = 0;
+    public void run() {
+        while(true) {
+            snakeDataTransfer.ready = true;
+            //Game Over?
+            if (this.snakeWorld.gameOver) {
+                failCounter++;
+                drawSnakeGameOver(failCounter, snakeWorld);
+                if (failCounter >= FAILING_DELAY) {
+                    this.snakeWorld.restart();
+                    failCounter = 0;
+                }
+            } else {
+                //Draw
+                drawSnakeGameData(this.snakeWorld);
+                counter++;
+                if (counter >= EXTRA_GAME_DELAY) {
+                    this.snakeWorld.moveSnake(snakeDataTransfer.direction);
+                    counter = 0;
+                }
             }
-        }
-        else {
-            //Draw
-            drawSnakeGameData(this.snakeWorld);
-            counter++;
-            if (counter >= EXTRA_GAME_DELAY) {
-                this.snakeWorld.moveSnake(snakeDataTransfer.direction);
-                counter = 0;
-            }
+            waitMs(tick_delay_ms);
         }
     }
 

@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48d5d0de-0e9d-4aa7-815c-d63e00c07d64" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Snake/snake/SnakeBot.class" afterPath="$PROJECT_DIR$/out/production/Snake/snake/SnakeBot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Snake/snake/SnakeEngine.class" afterPath="$PROJECT_DIR$/out/production/Snake/snake/SnakeEngine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Snake/snake/SnakeWorld$1.class" afterPath="$PROJECT_DIR$/out/production/Snake/snake/SnakeWorld$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Snake/snake/SnakeWorld$SNAKE_DIRECTION.class" afterPath="$PROJECT_DIR$/out/production/Snake/snake/SnakeWorld$SNAKE_DIRECTION.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Snake/snake/SnakeWorld.class" afterPath="$PROJECT_DIR$/out/production/Snake/snake/SnakeWorld.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Snake/main/TestBot.class" afterPath="$PROJECT_DIR$/out/production/Snake/main/TestBot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/Program.java" afterPath="$PROJECT_DIR$/src/main/Program.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/snake/SnakeBot.java" afterPath="$PROJECT_DIR$/src/snake/SnakeBot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/snake/SnakeDataTransfer.java" afterPath="$PROJECT_DIR$/src/snake/SnakeDataTransfer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/snake/SnakeEngine.java" afterPath="$PROJECT_DIR$/src/snake/SnakeEngine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/snake/SnakeWorld.java" afterPath="$PROJECT_DIR$/src/snake/SnakeWorld.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Snake.iws" />
@@ -39,10 +29,12 @@
       <file leaf-file-name="SnakeEngine.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/snake/SnakeEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.03586498">
-              <caret line="91" column="24" selection-start-line="91" selection-start-column="24" selection-end-line="91" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.28691983">
+              <caret line="56" column="31" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#3317#3318#0" expanded="true" />
+                <element signature="e#3362#3363#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -52,7 +44,7 @@
         <entry file="file://$PROJECT_DIR$/src/snake/SnakeBot.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -133,8 +125,8 @@
         <option value="$PROJECT_DIR$/src/main/TestBot.java" />
         <option value="$PROJECT_DIR$/src/snake/SnakeDataTransfer.java" />
         <option value="$PROJECT_DIR$/src/snake/SnakeWorld.java" />
-        <option value="$PROJECT_DIR$/src/snake/SnakeBot.java" />
         <option value="$PROJECT_DIR$/src/main/Program.java" />
+        <option value="$PROJECT_DIR$/src/snake/SnakeBot.java" />
         <option value="$PROJECT_DIR$/src/snake/SnakeEngine.java" />
       </list>
     </option>
@@ -492,6 +484,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#3317#3318#0" expanded="true" />
+            <element signature="e#3362#3363#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -550,6 +544,8 @@
           <caret line="110" column="42" selection-start-line="110" selection-start-column="42" selection-end-line="110" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#3317#3318#0" expanded="true" />
+            <element signature="e#3362#3363#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -610,16 +606,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/snake/SnakeBot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/TestBot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -650,12 +636,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/snake/SnakeEngine.java">
+    <entry file="file://$PROJECT_DIR$/src/snake/SnakeBot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03586498">
-          <caret line="91" column="24" selection-start-line="91" selection-start-column="24" selection-end-line="91" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/snake/SnakeEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28691983">
+          <caret line="56" column="31" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3317#3318#0" expanded="true" />
+            <element signature="e#3362#3363#0" expanded="true" />
           </folding>
         </state>
       </provider>
