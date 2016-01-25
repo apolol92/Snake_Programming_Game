@@ -14,7 +14,6 @@ import snake.SnakeEngine;
  */
 public class Program extends Application {
     public static String GAME_TITLE = "Snake";
-    public static String LABEL_STANDARD_SCORE = "Score: ";
     public static void main(String[] args)
     {
         launch(args);
@@ -36,12 +35,13 @@ public class Program extends Application {
 
         final long startNanoTime = System.nanoTime();
         //Create Engine
-        SnakeEngine snakeEngine = new SnakeEngine(gc, theScene,false);
+        SnakeEngine snakeEngine = new SnakeEngine(gc, theScene,true);
         snakeEngine.start();
+
         //Create Bot
-        TestBot testBot = new TestBot();
-        testBot.setSnakeDataTransferReference(snakeEngine.getSnakeDataTransfer());
-        testBot.start();
+        //TestBot testBot = new TestBot();
+        //testBot.setSnakeDataTransferReference(snakeEngine.getSnakeDataTransfer());
+        //testBot.start();
         theStage.show();
 
 

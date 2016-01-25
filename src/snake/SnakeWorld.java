@@ -1,6 +1,5 @@
 package snake;
 import javafx.geometry.Point2D;
-
 import java.util.ArrayList;
 import java.util.Random;
 /**
@@ -34,6 +33,10 @@ public class SnakeWorld {
         return score;
     }
 
+    /**
+     * Set new score. Needed by restart..
+     * @param score, new score
+     */
     public void setScore(int score) {
         this.score = score;
     }
@@ -103,13 +106,13 @@ public class SnakeWorld {
             }
             if (snakeSelfDmg()) {
                 //Game Over
-                snakeCollidedWithItself();
+                snakeCollidedWithItselfOutput();
             }
             if (!snakeCollidesWithWall()) {
                 //Add new snakepart at the beginning of the snake
                 this.snake.add(0, new Point2D(nX, nY));
                 //Remove last snakepart, if snake nothing ate
-                if (snakeCollidesWithApple()) {
+                if (snakeCollidedWithApple()) {
                     //Set a new apple position
                     setNewRandomApplePosition();
                     //Increase score
@@ -120,7 +123,7 @@ public class SnakeWorld {
                 }
             } else {
                 //Game over
-                snakeCollidedWithWall();
+                snakeCollidedWithWallOutput();
             }
         }
     }
@@ -157,13 +160,13 @@ public class SnakeWorld {
                 this.lastDirection = direction;
                 if (snakeSelfDmg()) {
                     //Game Over
-                    snakeCollidedWithItself();
+                    snakeCollidedWithItselfOutput();
                 }
                 if (!snakeCollidesWithWall()) {
                     //Add new snakepart at the beginning of the snake
                     this.snake.add(0, new Point2D(nX, nY));
                     //Remove last snakepart, if snake nothing ate
-                    if (snakeCollidesWithApple()) {
+                    if (snakeCollidedWithApple()) {
                         //Set a new apple position
                         setNewRandomApplePosition();
                         this.score++;
@@ -173,19 +176,25 @@ public class SnakeWorld {
                     }
                 } else {
                     //Game over
-                    snakeCollidedWithWall();
+                    snakeCollidedWithWallOutput();
 
                 }
             }
         }
     }
 
-    private void snakeCollidedWithWall() {
+    /**
+     * Snake collided with wall output
+     */
+    private void snakeCollidedWithWallOutput() {
         this.gameOver = true;
         System.out.println("GAME OVER: Snake collided with wall..");
     }
 
-    private void snakeCollidedWithItself() {
+    /**
+     * Snake collided with itself output
+     */
+    private void snakeCollidedWithItselfOutput() {
         this.gameOver = true;
         System.out.println("GAME OVER: Snake collided with itself..");
     }
@@ -222,13 +231,13 @@ public class SnakeWorld {
             nx = nx - (nx%10);
             ny = ny - (ny%10);
             this.apple = new Point2D(nx,ny);
-        }while (snakeCollidesWithApple());
+        }while (snakeCollidedWithApple());
     }
 
     /**
      * @return true if snake collided with apple
      */
-    public boolean snakeCollidesWithApple() {
+    public boolean snakeCollidedWithApple() {
         for(int i = 0; i < this.snake.size();i++) {
             if(this.snake.get(i).distance(this.apple.getX(),this.apple.getY())==0) {
                 return true;
@@ -279,6 +288,10 @@ public class SnakeWorld {
         this.score = 0;
     }
 
+    /**
+     * Create a copy of the snake
+     * @return snake copy
+     */
     public ArrayList<Point2D> copySnake() {
         ArrayList<Point2D> snakeCopy = new ArrayList<Point2D>();
         for(int i = 0; i < this.snake.size(); i++) {
@@ -287,6 +300,10 @@ public class SnakeWorld {
         return snakeCopy;
     }
 
+    /**
+     * Copy a apple
+     * @return apple copy
+     */
     public Point2D copyApple() {
         return new Point2D(apple.getX(),apple.getY());
     }

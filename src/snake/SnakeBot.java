@@ -52,6 +52,10 @@ public abstract class SnakeBot extends Thread {
         this.snakeDataTransferReference.ready = false;
     }
 
+    /**
+     * Get a copy of the snake world
+     * @return copy snakeworld
+     */
     public SnakeWorld getSnakeWorld() {
         SnakeWorld snakeWorld = new SnakeWorld();
         snakeWorld.snake = this.snakeDataTransferReference.snakeWorld.copySnake();

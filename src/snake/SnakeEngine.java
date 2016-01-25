@@ -49,7 +49,7 @@ public class SnakeEngine extends AnimationTimer {
     /**
      * Failing delay
      */
-    public final int FAILING_DELAY = 40;
+    public final int FAILING_DELAY = 5;
 
     /**
      * Construct GameEngine
@@ -140,18 +140,23 @@ public class SnakeEngine extends AnimationTimer {
         gc.fillRect(snakeWorld.apple.getX(), snakeWorld.apple.getY(), SCALE, SCALE);
         //Score
         gc.setFill(Color.BLACK);
-        gc.fillText(LABEL_STANDARD_SCORE + snakeWorld.getScore(), gc.getCanvas().getWidth()/2-25, 10);
+        gc.fillText(LABEL_STANDARD_SCORE + snakeWorld.getScore(), gc.getCanvas().getWidth()/2-25, 15);
 
     }
 
+    /**
+     * Draw Game Over on the screen
+     * @param failCounter, progress
+     * @param snakeWorld, needed for score..(TODO: only int)
+     */
     public void drawSnakeGameOver(int failCounter, SnakeWorld snakeWorld) {
         gc.setFill(new Color(0.85, 0.85, 1.0, 1.0));
         gc.fillRect(0, 0, 512, 512);
         //Score
         gc.setFill(Color.BLACK);
-        gc.fillText(LABEL_STANDARD_SCORE + snakeWorld.getScore(), gc.getCanvas().getWidth() / 2 - 25, 10);
+        gc.fillText(LABEL_STANDARD_SCORE + snakeWorld.getScore(), gc.getCanvas().getWidth() / 2 - 25, 15);
         //Game Over Text
         gc.setFill( Color.RED );
-        gc.fillText("Reloading "+(int)((float)failCounter/(float)FAILING_DELAY * 100)+"%", gc.getCanvas().getWidth()/2-25, 20);
+        gc.fillText("Reloading "+(int)((float)failCounter/(float)FAILING_DELAY * 100)+"%", gc.getCanvas().getWidth()/2-25, 28);
     }
 }
