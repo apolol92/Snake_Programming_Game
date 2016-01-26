@@ -45,12 +45,12 @@ public class SnakeEngine extends Thread {
     /**
      * Failing delay
      */
-    public final int FAILING_DELAY = 0;
+    public final int FAILING_DELAY = 10;
 
     /**
      * Delay in ms between ticks
      */
-    public int tick_delay_ms = 200;
+    public int tick_delay_ms = 10;
     /**
      * Construct GameEngine
      * @param gc, reference on canvas GraphicsContext
@@ -122,6 +122,7 @@ public class SnakeEngine extends Thread {
             } else {
                 //Ready for next command
                 snakeDataTransfer.ready = true;
+                System.out.println("New tick");
                 waitMs(tick_delay_ms);
                 //Draw
                 drawSnakeGameData(this.snakeWorld);

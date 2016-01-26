@@ -8,6 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import snake.SnakeEngine;
+import snake_ai.DSnake;
 
 /**
  * Created by apolol92 on 24.01.2016.
@@ -19,8 +20,7 @@ public class Program extends Application {
         launch(args);
     }
 
-    public void start(Stage theStage)
-    {
+    public void start(Stage theStage) {
         theStage.setTitle("Timeline Example");
 
         Group root = new Group();
@@ -35,9 +35,13 @@ public class Program extends Application {
 
         final long startNanoTime = System.nanoTime();
         //Create Engine
-        SnakeEngine snakeEngine = new SnakeEngine(gc, theScene,true);
+        SnakeEngine snakeEngine = new SnakeEngine(gc, theScene,false);
         snakeEngine.start();
 
+        //Create Snake ai
+        DSnake dSnake = new DSnake();
+        dSnake.setSnakeDataTransferReference(snakeEngine.getSnakeDataTransfer());
+        dSnake.start();
         //Create Bot
         //TestBot testBot = new TestBot();
         //testBot.setSnakeDataTransferReference(snakeEngine.getSnakeDataTransfer());
@@ -46,4 +50,6 @@ public class Program extends Application {
 
 
     }
+
+
 }

@@ -22,6 +22,7 @@ public class TestBot extends SnakeBot {
             //Do calculation
             Random rnd = new Random();
             //Send Command
+            System.out.println("Send Command");
             switch (rnd.nextInt(4)) {
                 case 0:
                     sendCommand(SnakeWorld.SNAKE_DIRECTION.RIGHT);
