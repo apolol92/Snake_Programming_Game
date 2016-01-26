@@ -43,10 +43,6 @@ public class SnakeEngine extends Thread {
      */
     public SnakeDataTransfer snakeDataTransfer;
     /**
-     * Game delay
-     */
-    public final int EXTRA_GAME_DELAY = 0;
-    /**
      * Failing delay
      */
     public final int FAILING_DELAY = 0;
@@ -54,7 +50,7 @@ public class SnakeEngine extends Thread {
     /**
      * Delay in ms between ticks
      */
-    public int tick_delay_ms = 0;
+    public int tick_delay_ms = 200;
     /**
      * Construct GameEngine
      * @param gc, reference on canvas GraphicsContext
@@ -105,7 +101,6 @@ public class SnakeEngine extends Thread {
         long current_ms;
         do {
             current_ms = System.currentTimeMillis();
-            System.out.println(Math.abs(current_ms-start_ms));
         }while(Math.abs(current_ms-start_ms)<=ms);
     }
 
@@ -115,25 +110,24 @@ public class SnakeEngine extends Thread {
     @Override
     public void run() {
         while(true) {
-            snakeDataTransfer.ready = true;
             //Game Over?
             if (this.snakeWorld.gameOver) {
                 failCounter++;
+                waitMs(tick_delay_ms);
                 drawSnakeGameOver(failCounter, snakeWorld);
                 if (failCounter >= FAILING_DELAY) {
                     this.snakeWorld.restart();
                     failCounter = 0;
                 }
             } else {
+                //Ready for next command
+                snakeDataTransfer.ready = true;
+                waitMs(tick_delay_ms);
                 //Draw
                 drawSnakeGameData(this.snakeWorld);
-                counter++;
-                if (counter >= EXTRA_GAME_DELAY) {
-                    this.snakeWorld.moveSnake(snakeDataTransfer.direction);
-                    counter = 0;
-                }
+                this.snakeWorld.moveSnake(snakeDataTransfer.direction);
+                counter = 0;
             }
-            waitMs(tick_delay_ms);
         }
     }
 
