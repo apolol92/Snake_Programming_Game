@@ -9,21 +9,17 @@ public class SnakeDataTransfer {
      */
     public SnakeWorld.SNAKE_DIRECTION direction;
     /**
-     * Reference to the SnakeWorld
-     */
-    public SnakeWorld snakeWorld;
-    /**
      * Ready for new command?
      */
     public boolean ready;
 
-    /**
-     * Constructor need a reference on the snakeWorld
-     * @param snakeWorld
-     */
-    public SnakeDataTransfer(SnakeWorld snakeWorld) {
+    public SnakeDataTransfer() {
         this.direction = SnakeWorld.SNAKE_DIRECTION.TOP;
-        this.snakeWorld = snakeWorld;
+        this.ready = true;
+    }
+
+    public void clean() {
+        this.direction = SnakeWorld.SNAKE_DIRECTION.TOP;
         this.ready = true;
     }
 }

@@ -5,6 +5,7 @@ import org.encog.neural.networks.BasicNetwork;
 import org.encog.neural.networks.layers.BasicLayer;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by apolol92 on 26.01.2016.
@@ -50,9 +51,13 @@ public class NeuroEvolution {
      * @param n, top 10 for example
      */
     public void surviveTop(int n) {
-        InsertionSort(this.neuroNetworks);
-        for(int i = this.neuroNetworks.size()-1;i>=n; i--) {
-            this.neuroNetworks.remove(i);
+        insertionSort(this.neuroNetworks);
+        for(int i = 0; i < 8; i++) {
+            Random rnd = new Random();
+            int index = rnd.nextInt(this.neuroNetworks.size());
+            this.neuroNetworks.get(index).getFlat().clearContext();
+            this.neuroNetworks.get(index).clearContext();
+            this.neuroNetworks.remove(index);
         }
     }
 
@@ -63,6 +68,7 @@ public class NeuroEvolution {
         int i = this.neuroNetworks.size();
         for(;i<population_size;i++) {
             this.neuroNetworks.add(i,this.neuroNetworks.get(0).crossoverAndMutation(this.neuroNetworks.get(1)));
+            //System.out.println("Hallo");
         }
     }
 
@@ -70,21 +76,10 @@ public class NeuroEvolution {
      * Just an insertion sort algorithms
      * @param networks, will be sorted
      */
-    public void InsertionSort( ArrayList<NeuroNetwork> networks)
+    public void insertionSort( ArrayList<NeuroNetwork> networks)
     {
-        /**
-         * Large values at the list beginning
-         */
-        int j;
-        int i;
-        NeuroNetwork keyNetwork;
-        for(j = 1; j < networks.size(); j++) {
-            keyNetwork = networks.get(j);
-            for(i = j-1; (i>=0) && (networks.get(i).fitness<keyNetwork.fitness);i--) {
-                networks.add(i+1,networks.get(i));
-            }
-            networks.add(i+1,keyNetwork);
-        }
+
+
     }
 
 

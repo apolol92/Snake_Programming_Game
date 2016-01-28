@@ -18,7 +18,10 @@ public class TestBot extends SnakeBot {
         super.run();
         while(true) {
             //Wait for next round
-            next();
+            if(next()==false){
+                restartGame();
+                System.out.println("restarted..");
+            }
             //Do calculation
             Random rnd = new Random();
             //Send Command
@@ -26,18 +29,26 @@ public class TestBot extends SnakeBot {
             switch (rnd.nextInt(4)) {
                 case 0:
                     sendCommand(SnakeWorld.SNAKE_DIRECTION.RIGHT);
+                    System.out.println("RIGHT");
                     break;
                 case 1:
                     sendCommand(SnakeWorld.SNAKE_DIRECTION.TOP);
+                    System.out.println("TOP");
                     break;
                 case 2:
                     sendCommand(SnakeWorld.SNAKE_DIRECTION.LEFT);
+                    System.out.println("LEFT");
                     break;
                 case 3:
                     sendCommand(SnakeWorld.SNAKE_DIRECTION.BOT);
+                    System.out.println("BOT");
                     break;
             }
         }
 
     }
+
+
+
+
 }

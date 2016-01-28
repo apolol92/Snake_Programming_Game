@@ -1,9 +1,5 @@
 package snake;
 
-import javafx.geometry.Point2D;
-
-import java.util.ArrayList;
-
 /**
  * Created by apolol92 on 24.01.2016.
  * Use this abstract class to create SnakeBots
@@ -11,59 +7,58 @@ import java.util.ArrayList;
 public abstract class SnakeBot extends Thread {
 
     /**
-     * A reference to the Snake Game Data Transfer
-     */
-    private SnakeDataTransfer snakeDataTransferReference;
-
-    /**
-     * Construct the snake bot
-     */
-    public SnakeBot() {
-        this.snakeDataTransferReference = null;
-    }
-
-    /**
-     * Add Snake Game Data Transfer reference to Snake Bot (MUST DO!!!)
-     * @param snakeDataTransferReference
-     */
-    public void setSnakeDataTransferReference(SnakeDataTransfer snakeDataTransferReference) {
-        this.snakeDataTransferReference = snakeDataTransferReference;
-    }
-
-    /**
      * Wait for next game frame
      */
-    public void next() {
-        while(this.snakeDataTransferReference.ready==false) {
+    public boolean next() {
+        while (SnakeGame.snakeDataTransfer.ready == false) {
             try {
-                Thread.sleep(0);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                sleep(0);
+            } catch (Exception ex) {
+
+            }
+            if (SnakeGame.snakeWorld.isGameOver()) {
+                return false;
             }
         }
+        return true;
     }
 
     /**
      * Send new calculated command to game
+     *
      * @param direction
      */
     public void sendCommand(SnakeWorld.SNAKE_DIRECTION direction) {
-        this.snakeDataTransferReference.direction = direction;
-        this.snakeDataTransferReference.ready = false;
+        SnakeGame.snakeDataTransfer.direction = direction;
+        SnakeGame.snakeDataTransfer.ready = false;
     }
 
     /**
      * Get a copy of the snake world
+     *
      * @return copy snakeworld
      */
     public SnakeWorld getSnakeWorld() {
         SnakeWorld snakeWorld = new SnakeWorld();
-        snakeWorld.snake = this.snakeDataTransferReference.snakeWorld.copySnake();
-        snakeWorld.apple = this.snakeDataTransferReference.snakeWorld.copyApple();
-        snakeWorld.gameOver = this.snakeDataTransferReference.snakeWorld.gameOver;
-        snakeWorld.setScore(this.snakeDataTransferReference.snakeWorld.getScore());
+        snakeWorld.snake = SnakeGame.snakeWorld.copySnake();
+        snakeWorld.apple = SnakeGame.snakeWorld.copyApple();
+        snakeWorld.gameOver = SnakeGame.snakeWorld.gameOver;
+        snakeWorld.setScore(SnakeGame.snakeWorld.getScore());
         return snakeWorld;
     }
+
+    /**
+     * This method restarts the Snake Game
+     */
+    public void restartGame() {
+        SnakeGame.snakeDataTransfer.clean();
+        SnakeGame.snakeWorld.restart();
+    }
+
+
+
+
+
 
 
 

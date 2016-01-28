@@ -104,26 +104,21 @@ public class SnakeWorld {
                     nY = (int) this.snake.get(0).getY() + SNAKE_SPEED;
                     break;
             }
-            if (snakeSelfDmg()) {
-                //Game Over
-                snakeCollidedWithItselfOutput();
-            }
-            if (!snakeCollidesWithWall()) {
-                //Add new snakepart at the beginning of the snake
-                this.snake.add(0, new Point2D(nX, nY));
-                //Remove last snakepart, if snake nothing ate
-                if (snakeCollidedWithApple()) {
-                    //Set a new apple position
-                    setNewRandomApplePosition();
-                    //Increase score
-                    this.score++;
-                } else {
-                    //Remove last snakepart
-                    this.snake.remove(this.snake.size() - 1);
+            if(!snakeSelfDmg()) {
+                if (!snakeCollidesWithWall()) {
+                    //Add new snakepart at the beginning of the snake
+                    this.snake.add(0, new Point2D(nX, nY));
+                    //Remove last snakepart, if snake nothing ate
+                    if (snakeCollidedWithApple()) {
+                        //Set a new apple position
+                        setNewRandomApplePosition();
+                        //Increase score
+                        this.score++;
+                    } else {
+                        //Remove last snakepart
+                        this.snake.remove(this.snake.size() - 1);
+                    }
                 }
-            } else {
-                //Game over
-                snakeCollidedWithWallOutput();
             }
         }
     }
@@ -158,46 +153,26 @@ public class SnakeWorld {
                         break;
                 }
                 this.lastDirection = direction;
-                if (snakeSelfDmg()) {
-                    //Game Over
-                    snakeCollidedWithItselfOutput();
-                }
-                if (!snakeCollidesWithWall()) {
-                    //Add new snakepart at the beginning of the snake
-                    this.snake.add(0, new Point2D(nX, nY));
-                    //Remove last snakepart, if snake nothing ate
-                    if (snakeCollidedWithApple()) {
-                        //Set a new apple position
-                        setNewRandomApplePosition();
-                        this.score++;
-                    } else {
-                        //Remove last snakepart
-                        this.snake.remove(this.snake.size() - 1);
+                if(!snakeSelfDmg()) {
+                    if (!snakeCollidesWithWall()) {
+                        //Add new snakepart at the beginning of the snake
+                        this.snake.add(0, new Point2D(nX, nY));
+                        //Remove last snakepart, if snake nothing ate
+                        if (snakeCollidedWithApple()) {
+                            //Set a new apple position
+                            setNewRandomApplePosition();
+                            this.score++;
+                        } else {
+                            //Remove last snakepart
+                            this.snake.remove(this.snake.size() - 1);
+                        }
                     }
-                } else {
-                    //Game over
-                    snakeCollidedWithWallOutput();
-
                 }
             }
         }
     }
 
-    /**
-     * Snake collided with wall output
-     */
-    private void snakeCollidedWithWallOutput() {
-        this.gameOver = true;
-        System.out.println("GAME OVER: Snake collided with wall..");
-    }
 
-    /**
-     * Snake collided with itself output
-     */
-    private void snakeCollidedWithItselfOutput() {
-        this.gameOver = true;
-        System.out.println("GAME OVER: Snake collided with itself..");
-    }
 
     /**
      * Is the new direction the inverted direction of the last direction?
@@ -252,6 +227,8 @@ public class SnakeWorld {
      */
     public boolean snakeCollidesWithWall() {
         if(this.snake.get(0).getX()>=this.GAME_WIDTH || this.snake.get(0).getX()<0 || this.snake.get(0).getY()>=this.GAME_HEIGHT || this.snake.get(0).getY()<0) {
+            System.out.println("GAME OVER: Snake collided with wall..");
+            this.gameOver = true;
             return true;
         }
         return false;
@@ -264,6 +241,8 @@ public class SnakeWorld {
         for(int i = 0; i < this.snake.size();i++) {
             if(i!=0) {
                 if (this.snake.get(i).distance(this.snake.get(0).getX(), this.snake.get(0).getY()) == 0) {
+                    this.gameOver = true;
+                    System.out.println("GAME OVER: Snake collided with itself..");
                     return true;
                 }
             }
