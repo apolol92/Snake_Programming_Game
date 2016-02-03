@@ -15,6 +15,7 @@ public class SnakeEngine extends Thread {
      * Standard score labeltext
      */
     public static String LABEL_STANDARD_SCORE = "Score: ";
+    private boolean userInput;
     /**
      * Javafx scene, used for userinput
      */
@@ -45,21 +46,26 @@ public class SnakeEngine extends Thread {
         SnakeEngine.tick_delay_ms = tick_delay_ms;
         SnakeGame.snakeWorld.restart();
         SnakeGame.snakeDataTransfer.clean();
+        this.userInput = userInput;
         if(userInput) {
             this.scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
                                             public void handle(KeyEvent event) {
                                                 switch (event.getCode().getName()) {
                                                     case "W":
                                                         SnakeGame.snakeDataTransfer.direction = SnakeWorld.SNAKE_DIRECTION.TOP;
+                                                        SnakeGame.snakeDataTransfer.ready = false;
                                                         break;
                                                     case "A":
                                                         SnakeGame.snakeDataTransfer.direction = SnakeWorld.SNAKE_DIRECTION.LEFT;
+                                                        SnakeGame.snakeDataTransfer.ready = false;
                                                         break;
                                                     case "D":
                                                         SnakeGame.snakeDataTransfer.direction = SnakeWorld.SNAKE_DIRECTION.RIGHT;
+                                                        SnakeGame.snakeDataTransfer.ready = false;
                                                         break;
                                                     case "S":
                                                         SnakeGame.snakeDataTransfer.direction = SnakeWorld.SNAKE_DIRECTION.BOT;
+                                                        SnakeGame.snakeDataTransfer.ready = false;
                                                         break;
                                                     case "Enter":
                                                         SnakeGame.snakeDataTransfer.clean();
@@ -128,15 +134,26 @@ public class SnakeEngine extends Thread {
             if(!SnakeGame.snakeWorld.isGameOver()) {
                 SnakeGame.snakeDataTransfer.ready = true;
                 drawSnakeGameData(SnakeGame.snakeWorld);
-                System.out.println("New tick");
                 waitMs(tick_delay_ms);
+                //while(SnakeGame.snakeDataTransfer.ready) {
+                    //waitMs(1);
+                //}
                 //Draw
                 drawSnakeGameData(SnakeGame.snakeWorld);
-                SnakeGame.snakeWorld.moveSnake(SnakeGame.snakeDataTransfer.direction);
+                if(SnakeGame.snakeDataTransfer.ready==false && this.userInput==true) {
+                    SnakeGame.snakeWorld.moveSnake(SnakeGame.snakeDataTransfer.direction);
+                }
+                else if(this.userInput==true){
+                    SnakeGame.snakeWorld.moveSnake();
+                }
+                if(this.userInput==false && SnakeGame.snakeDataTransfer.ready==false) {
+                    SnakeGame.snakeWorld.moveSnake(SnakeGame.snakeDataTransfer.direction);
+                }
             }
             else {
                 waitMs(tick_delay_ms);
             }
+
 
 
         }

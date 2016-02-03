@@ -1,64 +1,91 @@
 package snake_ai;
 
-
+import javafx.geometry.Point2D;
 import snake.SnakeBot;
 import snake.SnakeWorld;
-import snake_ai.neuro_evolution.NeuroEvolution;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
- * Created by apolol92 on 26.01.2016.
+ * Created by apolol92 on 29.01.2016.
  */
 public class DSnake extends SnakeBot {
-    NeuroEvolution neuroEvolution;
-    public DSnake(){
-        this.neuroEvolution = new NeuroEvolution(10,4,5,2,3,1);
+    public final int MAX_STEPS = 100;
+    public final int BRANCH_SIZE = 50;
+    public final int WEIGHT_TRESHOLD = 80;
+    public final int WEIGHT_TRIES = 50;
+    public DSnake() {
+
     }
+
     @Override
     public void run() {
-        /*super.run();
-        while(this.neuroEvolution.neuroNetworks.get(0).fitness<10) {
-            System.out.println("Fitness: " +this.neuroEvolution.neuroNetworks.get(0).fitness);
-            for(int i = 0; i < neuroEvolution.neuroNetworks.size(); i++) {
-                SnakeGame.snakeWorld.restart();
-                //waitForNextRound();
-                while (true) {
-                    System.out.println("Snake " + i+"/"+neuroEvolution.neuroNetworks.size()+getSnakeWorld().isGameOver());
-                    this.neuroEvolution.neuroNetworks.get(i).fitness = this.getSnakeWorld().getScore();
-                    if(next()==false) {
-                        break;
+        super.run();
+        while(true){
+            if(!next()) {
+                //Game is over.. do nothing
+            }
+            else {
+                long start = System.currentTimeMillis();
+                ArrayList<Branch> branchs = MonteCarloMethod.calculateToNextApple(getSnakeWorld(), BRANCH_SIZE, MAX_STEPS);
+                Branch best = getMaxBranch(branchs);
+                System.out.println(System.currentTimeMillis()-start);
+                for(int i = 0; i < best.history.size(); i++) {
+                    if(!next()) {
+                        i--;
                     }
-                    double snakeX = this.getSnakeWorld().copySnake().get(0).getX();
-                    double snakeY = this.getSnakeWorld().copySnake().get(0).getY();
-                    double appleX = this.getSnakeWorld().copyApple().getX();
-                    double appleY = this.getSnakeWorld().copyApple().getY();
-                    double score = this.getSnakeWorld().getScore();
-                    double[] computedDirection = new double[1];
-                    this.neuroEvolution.neuroNetworks.get(i).compute(new double[]{snakeX, snakeY, appleX, appleY, score}, computedDirection);
-                    //last check
-                    sendCommand(translate(computedDirection[0]));
-
+                    else {
+                        sendCommand(best.history.get(i));
+                    }
                 }
 
             }
-            System.out.println("SurviveTop");
-            this.neuroEvolution.surviveTop(2);
-            System.out.println("Repopulate");
-            this.neuroEvolution.repopulateWithTop2();
+
         }
-*/
+
     }
 
-    private SnakeWorld.SNAKE_DIRECTION translate(double computedDirection) {
-        System.out.println(computedDirection);
-        if(computedDirection<=0.25) {
-            return SnakeWorld.SNAKE_DIRECTION.TOP;
-        }
-        if(computedDirection<=0.5) {
-            return SnakeWorld.SNAKE_DIRECTION.LEFT;
-        }
-        if(computedDirection<=0.75) {
-            return SnakeWorld.SNAKE_DIRECTION.RIGHT;
-        }
-        return SnakeWorld.SNAKE_DIRECTION.BOT;
+    private boolean isNextGameOver(SnakeWorld.SNAKE_DIRECTION direction, SnakeWorld snakeWorld) {
+        SnakeWorld test = snakeWorld.copy();
+        //test.moveSnake(direction);
+        return test.isGameOver();
     }
+
+    private Branch getMaxBranch(ArrayList<Branch> branches) {
+        int maxIndex = 0;
+        double[] maxWeights = DirectionWeighter.weight(branches.get(0).snakeWorld,WEIGHT_TRESHOLD,WEIGHT_TRIES);
+        if(branches.size()==1) {
+            return branches.get(0);
+        }
+        for(int i = 1; i < branches.size(); i++) {
+            double[] currentWeights = DirectionWeighter.weight(branches.get(i).snakeWorld,WEIGHT_TRESHOLD,WEIGHT_TRIES);
+            //DirectionWeighter.printWeights(currentWeights);
+            if(compareArr(maxWeights,currentWeights)==2) {
+                maxWeights = currentWeights;
+                maxIndex = i;
+                branches.get(maxIndex).weights = maxWeights;
+
+            }
+        }
+        return branches.get(maxIndex);
+    }
+
+    private int compareArr(double[] a1, double[] a2) {
+        double max=0;
+        for(int i = 0; i < a1.length; i++) {
+            if(a1[i]>max) {
+                max = a1[i];
+            }
+        }
+        for(int i = 0; i < a2.length; i++) {
+            if(a2[i]>max) {
+                return 2;
+            }
+        }
+        return 1;
+    }
+
+
+
 }

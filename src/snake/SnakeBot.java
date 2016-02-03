@@ -10,7 +10,10 @@ public abstract class SnakeBot extends Thread {
      * Wait for next game frame
      */
     public boolean next() {
-        while (SnakeGame.snakeDataTransfer.ready == false) {
+        while (true) {
+            if(SnakeGame.snakeDataTransfer.ready == true) {
+                break;
+            }
             try {
                 sleep(0);
             } catch (Exception ex) {
@@ -28,9 +31,13 @@ public abstract class SnakeBot extends Thread {
      *
      * @param direction
      */
-    public void sendCommand(SnakeWorld.SNAKE_DIRECTION direction) {
+    public boolean sendCommand(SnakeWorld.SNAKE_DIRECTION direction) {
+        if(SnakeGame.snakeWorld.isGameOver()) {
+            return false;
+        }
         SnakeGame.snakeDataTransfer.direction = direction;
         SnakeGame.snakeDataTransfer.ready = false;
+        return true;
     }
 
     /**
@@ -39,12 +46,7 @@ public abstract class SnakeBot extends Thread {
      * @return copy snakeworld
      */
     public SnakeWorld getSnakeWorld() {
-        SnakeWorld snakeWorld = new SnakeWorld();
-        snakeWorld.snake = SnakeGame.snakeWorld.copySnake();
-        snakeWorld.apple = SnakeGame.snakeWorld.copyApple();
-        snakeWorld.gameOver = SnakeGame.snakeWorld.gameOver;
-        snakeWorld.setScore(SnakeGame.snakeWorld.getScore());
-        return snakeWorld;
+        return SnakeGame.snakeWorld.copy();
     }
 
     /**

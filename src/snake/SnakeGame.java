@@ -1,5 +1,7 @@
 package snake;
 
+import sun.awt.Mutex;
+
 /**
  * Created by apolol92 on 28.01.2016.
  */

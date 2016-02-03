@@ -17,7 +17,7 @@ public class SnakeWorld {
      * @return gameOver
      */
     public boolean isGameOver() {
-        return gameOver;
+        return this.gameOver;
     }
 
     /**
@@ -51,10 +51,16 @@ public class SnakeWorld {
      * In which direction is the snake walking?
      */
     public enum SNAKE_DIRECTION {NOTHING,TOP,LEFT,RIGHT,BOT};
+
+    public SNAKE_DIRECTION getLastDirection() {
+        return lastDirection;
+    }
+
     /**
      * last snake direction
      */
     private SNAKE_DIRECTION lastDirection;
+
     /**
      * how fast is the snake walking
      * Make sure that GAME_WIDTH % SNAKE_SPEED = 0 and GAME_HEIGHT % SNAKE_SPEED = 0
@@ -104,8 +110,8 @@ public class SnakeWorld {
                     nY = (int) this.snake.get(0).getY() + SNAKE_SPEED;
                     break;
             }
-            if(!snakeSelfDmg()) {
-                if (!snakeCollidesWithWall()) {
+            if(!snakeSelfDmg(nX, nY)) {
+                if (!snakeCollidedWithWall(nX, nY)) {
                     //Add new snakepart at the beginning of the snake
                     this.snake.add(0, new Point2D(nX, nY));
                     //Remove last snakepart, if snake nothing ate
@@ -153,8 +159,8 @@ public class SnakeWorld {
                         break;
                 }
                 this.lastDirection = direction;
-                if(!snakeSelfDmg()) {
-                    if (!snakeCollidesWithWall()) {
+                if(!snakeSelfDmg(nX, nY)) {
+                    if (!snakeCollidedWithWall(nX,nY)) {
                         //Add new snakepart at the beginning of the snake
                         this.snake.add(0, new Point2D(nX, nY));
                         //Remove last snakepart, if snake nothing ate
@@ -180,10 +186,10 @@ public class SnakeWorld {
      * @param direction, current direction
      * @return true, if it is the inverted direction
      */
-    private boolean invertedDirection(SNAKE_DIRECTION direction) {
+    public boolean invertedDirection(SNAKE_DIRECTION direction) {
         switch (direction) {
             case TOP:
-                return lastDirection.equals(SNAKE_DIRECTION.BOT);
+                return lastDirection==SNAKE_DIRECTION.BOT;
             case LEFT:
                 return lastDirection==SNAKE_DIRECTION.RIGHT;
             case RIGHT:
@@ -225,9 +231,9 @@ public class SnakeWorld {
      *
      * @return true if snake collided with wall
      */
-    public boolean snakeCollidesWithWall() {
-        if(this.snake.get(0).getX()>=this.GAME_WIDTH || this.snake.get(0).getX()<0 || this.snake.get(0).getY()>=this.GAME_HEIGHT || this.snake.get(0).getY()<0) {
-            System.out.println("GAME OVER: Snake collided with wall..");
+    public boolean snakeCollidedWithWall(int nX, int nY) {
+        if(nX>=this.GAME_WIDTH || nX<0 || nY>=this.GAME_HEIGHT || nY<0) {
+            //System.out.println("GAME OVER: Snake collided with wall..");
             this.gameOver = true;
             return true;
         }
@@ -237,12 +243,12 @@ public class SnakeWorld {
     /**
      * @return true if snake collided with itself
      */
-    public boolean snakeSelfDmg() {
+    public boolean snakeSelfDmg(int nX, int nY) {
         for(int i = 0; i < this.snake.size();i++) {
             if(i!=0) {
-                if (this.snake.get(i).distance(this.snake.get(0).getX(), this.snake.get(0).getY()) == 0) {
+                if (this.snake.get(i).distance(nX, nY) == 0) {
                     this.gameOver = true;
-                    System.out.println("GAME OVER: Snake collided with itself..");
+                    //System.out.println("GAME OVER: Snake collided with itself..");
                     return true;
                 }
             }
@@ -285,6 +291,15 @@ public class SnakeWorld {
      */
     public Point2D copyApple() {
         return new Point2D(apple.getX(),apple.getY());
+    }
+
+    public SnakeWorld copy() {
+        SnakeWorld snakeWorld = new SnakeWorld();
+        snakeWorld.snake = this.copySnake();
+        snakeWorld.apple = this.copyApple();
+        snakeWorld.gameOver = this.gameOver;
+        snakeWorld.setScore(this.getScore());
+        return snakeWorld;
     }
 
 
