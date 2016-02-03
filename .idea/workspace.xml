@@ -2,32 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48d5d0de-0e9d-4aa7-815c-d63e00c07d64" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/snake_ai/Branch.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/snake_ai/DirectionWeighter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/snake_ai/MonteCarloMethod.java" />
-      <change type="DELETED" beforePath="C:\Users\Dennis\Documents\Programmierung\Projekte\Snake_Programming_Game\libs\commons-math3-3.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dennis\Documents\Programmierung\Projekte\Snake_Programming_Game\libs\encog-core-3.3.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dennis\Documents\Programmierung\Projekte\Snake_Programming_Game\out\production\Snake\snake_ai\neuro_evolution\NeuroEvolution.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dennis\Documents\Programmierung\Projekte\Snake_Programming_Game\out\production\Snake\snake_ai\neuro_evolution\NeuroNetwork.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dennis\Documents\Programmierung\Projekte\Snake_Programming_Game\src\snake_ai\neuro_evolution\NeuroEvolution.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dennis\Documents\Programmierung\Projekte\Snake_Programming_Game\src\snake_ai\neuro_evolution\NeuroNetwork.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Snake/snake_ai/DSnake.class" afterPath="$PROJECT_DIR$/out/production/Snake/snake_ai/DSnake.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Snake/main/Program.class" afterPath="$PROJECT_DIR$/out/production/Snake/main/Program.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Snake/snake/SnakeBot.class" afterPath="$PROJECT_DIR$/out/production/Snake/snake/SnakeBot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Snake/snake/SnakeEngine$1.class" afterPath="$PROJECT_DIR$/out/production/Snake/snake/SnakeEngine$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Snake/snake/SnakeEngine$2.class" afterPath="$PROJECT_DIR$/out/production/Snake/snake/SnakeEngine$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Snake/snake/SnakeEngine.class" afterPath="$PROJECT_DIR$/out/production/Snake/snake/SnakeEngine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Snake/snake/SnakeGame.class" afterPath="$PROJECT_DIR$/out/production/Snake/snake/SnakeGame.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Snake/snake/SnakeWorld$1.class" afterPath="$PROJECT_DIR$/out/production/Snake/snake/SnakeWorld$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Snake/snake/SnakeWorld.class" afterPath="$PROJECT_DIR$/out/production/Snake/snake/SnakeWorld.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Snake/main/TestBot.class" afterPath="$PROJECT_DIR$/out/production/Snake/main/TestBot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/snake_ai/DSnake.java" afterPath="$PROJECT_DIR$/src/snake_ai/DSnake.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/Program.java" afterPath="$PROJECT_DIR$/src/main/Program.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/snake/SnakeBot.java" afterPath="$PROJECT_DIR$/src/snake/SnakeBot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/snake/SnakeEngine.java" afterPath="$PROJECT_DIR$/src/snake/SnakeEngine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/snake/SnakeGame.java" afterPath="$PROJECT_DIR$/src/snake/SnakeGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/snake/SnakeWorld.java" afterPath="$PROJECT_DIR$/src/snake/SnakeWorld.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/snake_ai/package-info.java" />
     </list>
     <ignored path="Snake.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,10 +24,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SnakeEngine.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SnakeEngine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/snake/SnakeEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.801626">
+            <state vertical-scroll-proportion="0.0">
               <caret line="137" column="60" selection-start-line="137" selection-start-column="60" selection-end-line="137" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -71,21 +46,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SnakeBot.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/snake/SnakeBot.java">
+      <file leaf-file-name="Branch.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/snake_ai/Branch.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
-              <folding />
+              <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SnakeDataTransfer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/snake/SnakeDataTransfer.java">
+      <file leaf-file-name="package-info.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/snake_ai/package-info.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.13821138">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -121,7 +98,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/Program.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+              <caret line="33" column="23" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -167,6 +144,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="package-info" />
       </list>
     </option>
   </component>
@@ -200,6 +178,7 @@
         <option value="$PROJECT_DIR$/src/snake_ai/MonteCarloMethod.java" />
         <option value="$PROJECT_DIR$/src/main/Program.java" />
         <option value="$PROJECT_DIR$/src/snake/SnakeEngine.java" />
+        <option value="$PROJECT_DIR$/src/snake_ai/package-info.java" />
       </list>
     </option>
   </component>
@@ -571,16 +550,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/snake_ai/MonteCarloMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/snake/SnakeWorld.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -938,24 +907,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/snake_ai/Branch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="36" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/snake_ai/DirectionWeighter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="67" column="24" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/snake/SnakeDataTransfer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -994,31 +945,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/snake_ai/MonteCarloMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="92" column="24" selection-start-line="92" selection-start-column="24" selection-end-line="92" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/TestBot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Program.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1032,11 +963,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/snake/SnakeEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.801626">
+        <state vertical-scroll-proportion="0.0">
           <caret line="137" column="60" selection-start-line="137" selection-start-column="60" selection-end-line="137" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Program.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="23" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/snake_ai/MonteCarloMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="92" column="24" selection-start-line="92" selection-start-column="24" selection-end-line="92" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/snake_ai/DirectionWeighter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="67" column="24" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/snake_ai/Branch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/snake_ai/package-info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13821138">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
